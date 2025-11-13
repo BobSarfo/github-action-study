@@ -1,0 +1,25 @@
+name: Deployment to staging environment
+on:
+  workflow_dispatch:
+jobs:
+  deploy-to-staging:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Install .NET SDK
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Restore
+        run: dotnet restore ./bootstrapper/bootstrapper.csproj
+
+      - name: Publish
+        run: dotnet publish ./bootstrapper/bootstrapper.csproj --configuration Release --output ./publish_output
+
+      - name: Deploy to Production Environment
+        run: |
+          echo "Deploying to staging environment..."
+          echo "Deployment to staging environment completed."
