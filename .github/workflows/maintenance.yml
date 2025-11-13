@@ -1,10 +1,11 @@
 name: maintenance
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * 0'  # Runs every Sunday at midnight
 jobs:
   scheduled-maintenance:
     runs-on: ubuntu-latest
-    schedule:
-      - cron: '0 0 * * 0'  # Runs every Sunday at midnight
     steps:
 #      - name: Checkout repository
 #        uses: actions/checkout@v5
