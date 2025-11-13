@@ -1,11 +1,13 @@
 name: pr-workflow
 on:
-  pull_request: 
+  push:
     branches:
       - main
 jobs:
-  run-unit-tests:
-  runs-on: ubuntu-latest
-  steps: 
-    - name: pullrepo
-    - uses: actions/checkout@v5
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+      - name: Echo message
+        run: echo "Pull request workflow triggered"
