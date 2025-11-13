@@ -1,0 +1,6 @@
+@bootstrapper_HostAddress = http://localhost:5207
+
+GET {{bootstrapper_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
