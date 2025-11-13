@@ -1,0 +1,11 @@
+name: pr-workflow
+on:
+  pull_request: 
+    branches:
+      - main
+jobs:
+  run-unit-tests:
+  runs-on: ubuntu-latest
+  steps: 
+    - name: pullrepo
+    - uses: actions/checkout@v5
