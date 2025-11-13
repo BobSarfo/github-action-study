@@ -23,3 +23,12 @@ jobs:
       
       - name: Test
         run: dotnet test ./github_action_study.sln --no-build --configuration Release --logger "trx;LogFileName=test-results.trx"
+        
+      - name: Test Report
+        uses: dorny/test-reporter@v2
+        if: always()
+        with:
+          name: .Net Tests         
+          path: '*/test-results/*.trx '
+          reporter: dotnet-trx       
+     
