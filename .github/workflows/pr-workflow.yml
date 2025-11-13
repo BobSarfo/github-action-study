@@ -9,5 +9,17 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
-      - name: Echo message
-        run: echo "Pull request workflow triggered"
+        
+      - name: installing .net sdk
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: "8.0.x"
+      
+      - name: Restore dependencies
+        run: dotnet restore ./github_action_study.sln
+      
+      - name: Build
+        run: dotnet build ./github_action_study.sln --no-restore --configuration Release
+      
+      - name: Test
+        run: dotnet test ./github_action_study.sln --no-build --configuration Release --logger "trx;LogFileName=test-results.trx"
