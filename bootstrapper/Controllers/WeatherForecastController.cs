@@ -1,7 +1,5 @@
 using bootstrapper.Services;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Identity.Web.Resource;
 
 namespace bootstrapper.Controllers;
 
