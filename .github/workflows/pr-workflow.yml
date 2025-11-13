@@ -44,11 +44,15 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
-        
-      - name: installing .net sdk
+
+      - name: Install .NET SDK
         uses: actions/setup-dotnet@v5
         with:
           dotnet-version: "8.0.x"
-      
+
+      - name: Restore
+        run: dotnet restore ./bootstrapper/bootstrapper.csproj
+
       - name: Publish
-        run: dotnet publish ./github_action_study.sln --no-build --configuration Release --output ./publish_output
+        run: dotnet publish ./bootstrapper/bootstrapper.csproj --configuration Release --output ./publish_output
+ 
