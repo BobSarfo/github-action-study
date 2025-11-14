@@ -1,13 +1,17 @@
 name: pr-workflow
+run-name: ${{ inputs.deploy_target }} by @${{ github.actor }}
 on:
 #  push:
 #    branches:
 #      - main
   pull_request:
     branches:
-      - '**'
+      - main
+      - 'releases/**'
   workflow_dispatch:
-    
+defaults:
+  run:
+    shell: bash |pwsh
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
@@ -58,3 +62,8 @@ jobs:
  
       - name: Get Event Details
         run: echo "EVENT_NAME=${{ toJSON(github.event_name) }}" >> $GITHUB_ENV
+        
+      - name: Deploy to Target Environment
+        uses: actions/upload-artifact@v4
+        with:
+          path: './publish_output'

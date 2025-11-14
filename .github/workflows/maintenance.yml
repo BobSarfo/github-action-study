@@ -18,5 +18,4 @@ jobs:
       - name: Run Maintenance Script
         run: |
           echo "Running maintenance tasks..."
-          # Add your maintenance commands here
           echo "Maintenance tasks completed."
