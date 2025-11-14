@@ -1,5 +1,5 @@
 name: pr-workflow
-run-name: ${{ inputs.deploy_target }} by @${{ github.actor }}
+run-name: ${{ github.event_name }}  ${{ inputs.deploy_target }} by @${{ github.actor }}
 on:
 #  push:
 #    branches:
@@ -44,7 +44,7 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     needs: build-and-test
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    if: github.ref == 'refs/heads/main' || github.event_name == 'push'
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
