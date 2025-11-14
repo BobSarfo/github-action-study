@@ -9,9 +9,9 @@ on:
       - main
       - 'releases/**'
   workflow_dispatch:
-defaults:
-  run:
-    shell: bash |pwsh
+#defaults:
+#  run:
+#    shell: bash |pwsh
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
